@@ -1,3 +1,4 @@
+import { MembersService } from './../../services/members.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 export interface MemberMinimunInfo {
@@ -19,9 +20,13 @@ export class MembersListComponent implements OnInit {
 
   @Input() dataSource: MemberMinimunInfo[] = [];
 
-  constructor() { }
+  constructor(private membersService: MembersService) { }
 
   ngOnInit(): void {
+  }
+
+  getMember(index: any) {
+    this.membersService.setMemberDetail(index);
   }
 
 }

@@ -1,8 +1,3 @@
-<app-header></app-header>
-  <div>
-    <app-search (onGlobalSearch)="search($event)"></app-search>
-  </div>
-  <div>
-    <app-members-list [dataSource]="data"></app-members-list>
-  </div>
-<app-footer></app-footer>
+<app-search (onGlobalSearch)="search($event)"></app-search>
+<app-members-list [dataSource]="data"></app-members-list>
+
