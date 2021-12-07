@@ -26,7 +26,8 @@ import { MembersService } from './services/members.service';
     HeaderComponent,
     FooterComponent,
     MembersListComponent,
-    SearchComponent
+    SearchComponent,
+    MaterialModule
   ],
   providers: [
     MembersService
