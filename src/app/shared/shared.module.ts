@@ -1,26 +1,35 @@
 import { NgModule } from '@angular/core';
+import { MaterialModule } from './material.module';
+
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MembersListComponent } from './components/members-list/members-list.component';
+import { SearchComponent } from './components/search/search.component';
+
+import { MembersService } from './services/members.service';
+
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MembersListComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
-    MatIconModule,
-    MatToolbarModule
+    MaterialModule
   ],
   exports: [
-    MatIconModule,
-    MatToolbarModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MembersListComponent,
+    SearchComponent
   ],
+  providers: [
+    MembersService
+  ]
 })
 export class SharedModule { }
