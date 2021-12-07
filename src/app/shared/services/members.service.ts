@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class MembersService {
-  member = {};
-  memberDetail = {};
+  member: any = {};
+  memberList = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -17,12 +17,9 @@ export class MembersService {
     return this.http.get(environment.apiUrl);
   }
 
-  setMemberDetail(index: any): void {
-    this.getMemberList()
-    .subscribe((list) => {
-      this.member = list.results[0].members[index];
-      this.router.navigate(['member-detail']);
-    })
+  setMemberDetail(row: any): void {
+    this.member = this.memberList.find((member: any) => member.id === row.id);
+    this.router.navigate(['member-detail']);
   }
 
 }
