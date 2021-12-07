@@ -22,4 +22,12 @@ describe('SearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set filter type when setFilter is called', () => {
+    component.filter = '';
+
+    component.setFilter('test');
+
+    expect(component.filter).toEqual('test');
+  });
 });

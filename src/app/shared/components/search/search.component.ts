@@ -7,6 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  filter: string = 'global';
+
   @Output() onGlobalSearch = new EventEmitter();
 
   constructor() { }
@@ -16,7 +18,11 @@ export class SearchComponent implements OnInit {
 
   onSubmit(event: any, value: any) {
     event.preventDefault();
-    this.onGlobalSearch.emit(value);
+    this.onGlobalSearch.emit({ value, filter: this.filter });
+  }
+
+  setFilter(type: string): void {
+    this.filter = type;
   }
 
 }
