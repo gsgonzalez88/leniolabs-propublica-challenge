@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.page';
 
-import { HttpService } from './core/http/http.service';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -22,9 +21,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     SharedModule
   ],
-  providers: [
-    HttpService,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
