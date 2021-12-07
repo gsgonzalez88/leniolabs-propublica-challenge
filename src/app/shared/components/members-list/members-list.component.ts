@@ -1,7 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MembersService } from './../../services/members.service';
-import { HttpService } from '../../../core/http/http.service';
-import { tap } from 'rxjs';
 
 export interface MemberMinimunInfo {
   name: string;
