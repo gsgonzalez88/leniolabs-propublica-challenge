@@ -1,17 +1,17 @@
 <mat-card>
   <form class="example-form" (submit)="onSubmit($event,input.value)">
     <mat-form-field class="example-full-width" appearance="fill">
-      <input matInput placeholder="{{filter}} Search" #input>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Search By</mat-label>
       <mat-select>
         <mat-option value="global" (click)="setFilter('global')">Global</mat-option>
         <mat-option value="name" (click)="setFilter('name')">Name</mat-option>
-        <mat-option value="last_name" (click)="setFilter('last name')">Last Name</mat-option>
+        <mat-option value="last_name" (click)="setFilter('last_name')">Last Name</mat-option>
         <mat-option value="gender" (click)="setFilter('gender')">Gender</mat-option>
         <mat-option value="party" (click)="setFilter('party')">Party</mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="{{filter}} Search" #input>
     </mat-form-field>
   </form>
 </mat-card>
