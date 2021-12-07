@@ -1,5 +1,6 @@
 import { MembersService } from './../../shared/services/members.service';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './home.page.html',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
   found: any[] = [];
 
   constructor(
-    private membersService: MembersService
+    private membersService: MembersService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -21,17 +23,29 @@ export class HomeComponent implements OnInit {
 
   setMemberList(): void {
     this.membersService.getMemberList()
-    .subscribe((list) => {
-      this.members = list.results[0].members;
-      this.data = this.members.map((member: any) => {
-        return {
-          'name': member.first_name,
-          'last_name': member.last_name,
-          'gender': member.gender,
-          'party': member.party,
-        }
-      })
-      this.pageReady = true;
+    .subscribe(
+      {
+        next: ((list) => {
+          this.membersService.memberList = list.results[0].members;
+          this.setData();
+          this.pageReady = true;
+          }),
+        error: ((error: any) => {
+          this.openSnackBar('Server Error', 'close');
+        })
+      }
+    )
+  }
+
+  setData(): void {
+    this.data = this.membersService.memberList.map((member: any) => {
+      return {
+        'id': member.id,
+        'name': member.first_name,
+        'last_name': member.last_name,
+        'gender': member.gender,
+        'party': member.party,
+      }
     })
   }
 
@@ -60,4 +74,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
 }
