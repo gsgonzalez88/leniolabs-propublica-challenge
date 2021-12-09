@@ -1,22 +1,19 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FilterConstants } from '../../constants/filter.constants';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
-  filter: string = 'global';
-
+  filter: string = FilterConstants.GLOBAL;
   @Output() onGlobalSearch = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  onSubmit(event: any, value: any) {
+  onSubmit(event: Event, value: string): void {
     event.preventDefault();
     this.onGlobalSearch.emit({ value, filter: this.filter });
   }

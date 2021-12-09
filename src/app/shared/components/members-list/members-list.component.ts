@@ -1,5 +1,5 @@
 import { MembersService } from './../../services/members.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 export interface MemberMinimunInfo {
   name: string;
@@ -13,17 +13,12 @@ export interface MemberMinimunInfo {
   templateUrl: './members-list.component.html',
   styleUrls: ['./members-list.component.css']
 })
-export class MembersListComponent implements OnInit {
+export class MembersListComponent {
 
   displayedColumns: string[] = ['name', 'last_name', 'gender', 'party'];
-
-
   @Input() dataSource: MemberMinimunInfo[] = [];
 
   constructor(private membersService: MembersService) { }
-
-  ngOnInit(): void {
-  }
 
   getMember(index: any) {
     this.membersService.setMemberDetail(index);
